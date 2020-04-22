@@ -3,7 +3,8 @@ from SqLiteConnector import SqLiteConnector
 def main():
     print("hey")
     connector = SqLiteConnector()
-    connector.name_database('TestDatabase')
+    #kein name
+    connector.name_database('')
     connector.start_database_connection()
     connector.create_table('chat')
     connector.insert_to_table('chat', '20:45', 'Peter', 'Hallo')
@@ -12,15 +13,30 @@ def main():
 
     connector.get_all_from_table('chat')
     rows = connector.cursor.fetchall()
+    i, j, k = rows[0]
+    print(''+i)
+    print(''+j)
+    print(''+k)
 
-    for row in rows:
-        print(row.format())
+    i, j, k = rows[1]
+    print(''+i)
+    print(''+j)
+    print(''+k)
 
-    print("\n")
-    connector.search_in_table('chat', 'Peter')
+    i, j, k = rows[2]
+    print(''+i)
+    print(''+j)
+    print(''+k)
 
-    rows = connector.cursor.fetchall()
-    print(rows)
+    print('heeey')
+    # for row in rows:
+    #     print(row)
+    #
+    # print("\n")
+    # connector.search_in_table('chat', 'Peter')
+    #
+    # rows = connector.cursor.fetchall()
+    # print(rows)
 
     connector.commit_changes()
 

@@ -12,7 +12,9 @@ class SqLiteConnector:
         self.dn = dname
 
     def start_database_connection(self):
-        self.connector = sqlite3.connect('{}.db'.format(self.dn))
+
+        #self.connector = sqlite3.connect('{}.db'.format(self.dn))
+        self.connector = sqlite3.connect(':memory:')
         self.cursor = self.connector.cursor()
 
     def create_table(self, tname):
