@@ -29,7 +29,8 @@ public class AccountActivity extends BacNetActivity {
         setContentView(R.layout.activity_account);
         keyDirectory = getBaseContext().getFilesDir().getPath();
         getAndSetPublicKey();
-        setText();
+        setPublicKeyText();
+        TextView changeUsernameField = findViewById(R.id.changeUsernameText);
     }
 
     public class FileFilter implements FilenameFilter {
@@ -66,8 +67,8 @@ public class AccountActivity extends BacNetActivity {
         publicKey = s;
     }
 
-    public void setText() {
-        TextView keyInfos = findViewById(R.id.keyPublicPrivate);
+    public void setPublicKeyText() {
+        TextView keyInfos = findViewById(R.id.publicKey);
         keyInfos.setText(publicKey);
     }
 
