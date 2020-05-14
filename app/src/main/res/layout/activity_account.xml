@@ -4,13 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context="com.chaquo.python.utils.AccountActivity">
+
+
+    <TextView
+        android:id="@+id/publicKeyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="Public Key:"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.386" />
 
     <TextView
         android:id="@+id/keyPublicPrivate"
-        android:layout_width="wrap_content"
+        android:background="@drawable/row_border"
+        android:layout_width="329dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:ellipsize="start"
         android:text="TextView"
-        tools:layout_editor_absoluteX="131dp"
-        tools:layout_editor_absoluteY="248dp" />
+        android:textColor="#63000000"
+        android:textIsSelectable="true"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/publicKeyText"
+        app:layout_constraintVertical_bias="0.027" />
 </androidx.constraintlayout.widget.ConstraintLayout>
