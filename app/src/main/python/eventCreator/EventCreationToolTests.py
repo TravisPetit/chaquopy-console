@@ -54,6 +54,7 @@ def verify_event(event, previous_event=None):
 
 
 def main():
+
     eg = EventCreationTool.EventFactory(path_to_keys=str(Python.getPlatform().getApplication().getFilesDir()), path_to_keys_relative=False)
     first_event = eg.next_event('KotlinUI/post', {'username' : "Bob", 'publickey' : eg.get_feed_id(),
                                                   'timestamp' : 1, 'text' : "HELOOOO"})
