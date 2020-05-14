@@ -60,7 +60,7 @@ public class AccountActivity extends BacNetActivity {
         for (String file : listOfTextFiles) {
             //construct the absolute file paths...
             String absoluteFilePath = new StringBuffer(keyDirectory).append(File.separator).append(file).toString();
-            s = s + absoluteFilePath;
+            s = s + file;
             System.out.println(absoluteFilePath);
         }
         publicKey = s;
