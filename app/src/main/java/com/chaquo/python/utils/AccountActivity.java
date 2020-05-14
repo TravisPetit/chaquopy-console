@@ -27,10 +27,9 @@ public class AccountActivity extends BacNetActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
-        publicKey = getBaseContext().getFilesDir().getPath();
-        Log.d("HERE", publicKey);
-        //getAndSetPublicKey();
-        //setText();
+        keyDirectory = getBaseContext().getFilesDir().getPath();
+        getAndSetPublicKey();
+        setText();
     }
 
     public class FileFilter implements FilenameFilter {
