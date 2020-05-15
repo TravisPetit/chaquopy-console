@@ -1,17 +1,24 @@
 package com.chaquo.python.utils;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Application;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.chaquo.python.PyObject;
 import com.chaquo.python.Python;
 import com.chaquo.python.console.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -19,7 +26,6 @@ import java.io.FilenameFilter;
 public class AccountActivity extends BacNetActivity {
 
     public  String publicKey;
-    public String privateKey;
     public String keyDirectory;
     private String fileExtension = ".key";
 
@@ -30,9 +36,17 @@ public class AccountActivity extends BacNetActivity {
         keyDirectory = getBaseContext().getFilesDir().getPath();
         getAndSetPublicKey();
         setPublicKeyText();
-        //TextView changeUsernameField = findViewById(R.id.changeUsernameText);
+        final TextInputLayout changeUsernameField = findViewById(R.id.changeUsernameText);
+        FloatingActionButton updateUsernameButton = findViewById(R.id.floatingActionButton_updateUsername);
+        updateUsernameButton.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void onClick(View view) {
+                Log.d("HELLO", changeUsernameField.getEditText().getText().toString());
+            }
+        });
     }
-
+//-------------------------------------publickey---------------------------------------------
     public class FileFilter implements FilenameFilter {
 
         private String fileExtension;
@@ -50,7 +64,7 @@ public class AccountActivity extends BacNetActivity {
     public void getAndSetPublicKey() {
         FileFilter fileFilter = new FileFilter(fileExtension);
         File parentDir = new File(keyDirectory);
-        // Put the names of all files ending with .txt in a String array
+        // Put the names of all files ending with .key in a String array
         String[] listOfTextFiles = parentDir.list(fileFilter);
 
         if (listOfTextFiles.length == 0) {
@@ -71,7 +85,7 @@ public class AccountActivity extends BacNetActivity {
         TextView keyInfos = findViewById(R.id.publicKey);
         keyInfos.setText(publicKey);
     }
-
+//-------------------------------------------------------------------------------------------
 
     public static class Task extends DebugActivity.Task {
         public Task(Application app) {
