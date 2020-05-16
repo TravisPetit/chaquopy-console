@@ -31,11 +31,11 @@
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
 
             <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
+                android:layout_width="272dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginRight="90dp"
-                android:hint="hint" />
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:hint="Add Friend" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
@@ -47,8 +47,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
-        app:layout_anchor="@id/app_bar"
-        app:layout_anchorGravity="right"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:layout_anchor="@+id/app_bar"
+        app:layout_anchorGravity="center"
+        app:srcCompat="@drawable/ic_add_circle_outline" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="com.chaquo.python.utils.FriendslistActivity"
-            android:label="@string/title_activity_friendslist"
+            android:label=" "
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="com.chaquo.python.utils.AccountActivity" />
         <activity android:name="com.chaquo.python.utils.PostActivity" />
