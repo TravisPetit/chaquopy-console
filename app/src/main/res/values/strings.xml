@@ -5,7 +5,6 @@
     <string name="myDebug">Debug </string>
     <string name="title_activity_my_feed">MyFeedActivity</string>
 
-
     <string name="my_text_view_name">my_text_view_name</string>
     <string name="my_text_view_content">my_text_view_content</string>
     <string name="my_text_view_timestamp">my_text_view_timestamp</string>
@@ -103,7 +102,7 @@
     <string name="action_settings">Settings</string>
     <string name="Feed">Feed</string>
     <string name="Account">Account</string>
-    <string name="Friendslist">Friendslist</string>
+    <string name="Friendslist">Friends List</string>
     <string name="title_activity_friendslist">FriendslistActivity</string>
     <string name="title_activity_main2">Main2Activity</string>
     <!-- Strings used for fragments for navigation -->

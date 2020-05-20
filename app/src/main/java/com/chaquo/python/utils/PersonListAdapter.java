@@ -31,8 +31,6 @@ public class PersonListAdapter extends ArrayAdapter<Person> {
      */
     private static class ViewHolder {
         TextView name;
-        TextView birthday;
-        TextView sex;
     }
 
     /**
@@ -51,11 +49,9 @@ public class PersonListAdapter extends ArrayAdapter<Person> {
     public View getView(int position, View convertView, ViewGroup parent) {
         //get the persons information
         String name = getItem(position).getName();
-        String birthday = getItem(position).getBirthday();
-        String sex = getItem(position).getSex();
 
         //Create the person object with the information
-        Person person = new Person(name,birthday,sex);
+        Person person = new Person(name);
 
         //create the view result for showing the animation
         final View result;
@@ -69,8 +65,6 @@ public class PersonListAdapter extends ArrayAdapter<Person> {
             convertView = inflater.inflate(mResource, parent, false);
             holder= new ViewHolder();
             holder.name = (TextView) convertView.findViewById(R.id.textView1);
-            holder.birthday = (TextView) convertView.findViewById(R.id.textView2);
-            holder.sex = (TextView) convertView.findViewById(R.id.textView3);
 
             result = convertView;
 
@@ -88,9 +82,6 @@ public class PersonListAdapter extends ArrayAdapter<Person> {
         lastPosition = position;
 
         holder.name.setText(person.getName());
-        holder.birthday.setText(person.getBirthday());
-        holder.sex.setText(person.getSex());
-
 
         return convertView;
     }
