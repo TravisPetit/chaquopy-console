@@ -39,7 +39,6 @@ public class AccountActivity extends BacNetActivity {
         final TextInputLayout changeUsernameField = findViewById(R.id.changeUsernameText);
         FloatingActionButton updateUsernameButton = findViewById(R.id.floatingActionButton_updateUsername);
         updateUsernameButton.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
                 Log.d("HELLO", changeUsernameField.getEditText().getText().toString());
