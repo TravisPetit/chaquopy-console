@@ -41,21 +41,21 @@ public class FriendslistActivity extends BacNetActivity {
         ListView mListView = (ListView) findViewById(R.id.listView);
 
         //Create the Person objects
-        Person john = new Person("John","12-20-1998","Male");
-        Person steve = new Person("Steve","08-03-1987","Male");
-        Person stacy = new Person("Stacy","11-15-2000","Female");
-        Person ashley = new Person("Ashley","07-02-1999","Female");
-        Person matt = new Person("Matt","03-29-2001","Male");
-        Person matt2 = new Person("Matt2","03-29-2001","Male");
-        Person matt3 = new Person("Matt3","03-29-2001","Male");
-        Person matt4 = new Person("Matt4","03-29-2001","Male");
-        Person matt5 = new Person("Matt5","03-29-2001","Male");
-        Person matt6 = new Person("Matt6","03-29-2001","Male");
-        Person matt7 = new Person("Matt7","03-29-2001","Male");
-        Person matt8 = new Person("Matt8","03-29-2001","Male");
-        Person matt9 = new Person("Matt9","03-29-2001","Male");
-        Person matt10 = new Person("Matt10","03-29-2001","Male");
-        Person matt11 = new Person("Matt11","03-29-2001","Male");
+        Person john = new Person("John");
+        Person steve = new Person("Steve");
+        Person stacy = new Person("Stacy");
+        Person ashley = new Person("Ashley");
+        Person matt = new Person("Matt");
+        Person matt2 = new Person("Matt2");
+        Person matt3 = new Person("Matt3");
+        Person matt4 = new Person("Matt4");
+        Person matt5 = new Person("Matt5");
+        Person matt6 = new Person("Matt6");
+        Person matt7 = new Person("Matt7");
+        Person matt8 = new Person("Matt8");
+        Person matt9 = new Person("Matt9");
+        Person matt10 = new Person("Matt10");
+        Person matt11 = new Person("Matt11");
 
         //Add the Person objects to an ArrayList
         ArrayList<Person> peopleList = new ArrayList<>();

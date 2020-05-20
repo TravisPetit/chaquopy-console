@@ -2,21 +2,9 @@ package com.chaquo.python.utils;
 
     public class Person {
         private String name;
-        private String birthday;
-        private String sex;
 
-        public Person(String name, String birthday,  String sex) {
-            this.birthday = birthday;
+        public Person(String name) {
             this.name = name;
-            this.sex = sex;
-        }
-
-        public String getBirthday() {
-            return birthday;
-        }
-
-        public void setBirthday(String birthday) {
-            this.birthday = birthday;
         }
 
         public String getName() {
@@ -27,12 +15,6 @@ package com.chaquo.python.utils;
             this.name = name;
         }
 
-        public String getSex() {
-            return sex;
-        }
 
-        public void setSex(String sex) {
-            this.sex = sex;
-        }
     }
 
