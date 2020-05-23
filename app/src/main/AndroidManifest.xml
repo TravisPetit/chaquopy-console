@@ -11,9 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.chaquo.python.utils.FriendslistActivity"
-            android:label="@string/Friendslist"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name="com.chaquo.python.utils.FriendslistActivity" />
         <activity android:name="com.chaquo.python.utils.AccountActivity" />
         <activity android:name="com.chaquo.python.utils.PostActivity" />
         <activity android:name="com.chaquo.python.utils.RecyclerFeedActivity" />

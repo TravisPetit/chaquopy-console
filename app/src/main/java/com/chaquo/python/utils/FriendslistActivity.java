@@ -1,74 +1,68 @@
 package com.chaquo.python.utils;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
+import android.os.Build;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.appcompat.widget.Toolbar;
-
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 
+import androidx.annotation.RequiresApi;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.chaquo.python.PyObject;
+import com.chaquo.python.Python;
 import com.chaquo.python.console.R;
-
-import android.util.Log;
-import android.widget.ListView;
-
-import java.util.ArrayList;
-
-
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class FriendslistActivity extends BacNetActivity {
-    private static final String TAG = "MainActivity";
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
 
+
+
+
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friendslist);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
-        Log.d(TAG, "onCreate: Started.");
-        ListView mListView = (ListView) findViewById(R.id.listView);
 
-        //Create the Person objects
-        Person john = new Person("John");
-        Person steve = new Person("Steve");
-        Person stacy = new Person("Stacy");
-        Person ashley = new Person("Ashley");
-        Person matt = new Person("Matt");
-        Person matt2 = new Person("Matt2");
-        Person matt3 = new Person("Matt3");
-        Person matt4 = new Person("Matt4");
-        Person matt5 = new Person("Matt5");
-        Person matt6 = new Person("Matt6");
-        Person matt7 = new Person("Matt7");
-        Person matt8 = new Person("Matt8");
-        Person matt9 = new Person("Matt9");
-        Person matt10 = new Person("Matt10");
-        Person matt11 = new Person("Matt11");
 
-        //Add the Person objects to an ArrayList
-        ArrayList<Person> peopleList = new ArrayList<>();
-        peopleList.add(john);
-        peopleList.add(steve);
-        peopleList.add(stacy);
-        peopleList.add(ashley);
-        peopleList.add(matt);
-        peopleList.add(matt2);
-        peopleList.add(matt3);
-        peopleList.add(matt4);
-        peopleList.add(matt5);
-        peopleList.add(matt6);
-        peopleList.add(matt7);
-        peopleList.add(matt8);
-        peopleList.add(matt9);
-        peopleList.add(matt10);
-        peopleList.add(matt11);
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        recyclerView.setHasFixedSize(true);
 
-        PersonListAdapter adapter = new PersonListAdapter(this, R.layout.content_friendslist, peopleList);
-        mListView.setAdapter(adapter);
+        // use a linear layout manager
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        // specify an adapter (see also next example)
+        Person p1 = new Person("Travis");
+        Person p2 = new Person("Nour");
+        Person p3 = new Person("Sanja");
+        Person[] p = {p1, p2, p3};
+        passFriendsToGUI(p);
+
+    }
+
+    public void passFriendsToGUI(Person[] p) {
+        mAdapter = new PersonListAdapter(p);
+        recyclerView.setAdapter(mAdapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     public static class Task extends DebugActivity.Task {
@@ -83,7 +77,8 @@ public class FriendslistActivity extends BacNetActivity {
     }
 
     @Override
-    protected Class<? extends FriendslistActivity.Task> getTaskClass() {
-        return FriendslistActivity.Task.class;
+    protected Class<? extends Task> getTaskClass() {
+        return Task.class;
     }
 }
+

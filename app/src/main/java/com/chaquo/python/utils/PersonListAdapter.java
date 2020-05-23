@@ -1,95 +1,68 @@
 package com.chaquo.python.utils;
 
-
-import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.chaquo.python.console.R;
 
-import java.util.ArrayList;
-import java.util.List;
+public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.MyViewHolder> {
+    private Person[] mDataset;
 
-/**
- * Created by User on 3/14/2017.
- */
-
-public class PersonListAdapter extends ArrayAdapter<Person> {
-
-    private static final String TAG = "PersonListAdapter";
-
-    private Context mContext;
-    private int mResource;
-    private int lastPosition = -1;
-
-    /**
-     * Holds variables in a View
-     */
-    private static class ViewHolder {
-        TextView name;
+    // Provide a reference to the views for each data item
+    // Complex data items may need more than one view per item, and
+    // you provide access to all the views for a data item in a view holder
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
+        // each data item is just a string in this case
+        //public TextView name;
+        //public TextView content;
+        //public TextView timestamp;
+        public LinearLayout layout;
+        public MyViewHolder(LinearLayout l) {
+            super(l);
+            layout = l;
+            //l.getLayoutParams().height = 300;
+        }
     }
 
-    /**
-     * Default constructor for the PersonListAdapter
-     * @param context
-     * @param resource
-     * @param objects
-     */
-    public PersonListAdapter(Context context, int resource, ArrayList<Person> objects) {
-        super(context, resource, objects);
-        mContext = context;
-        mResource = resource;
+    // Provide a suitable constructor (depends on the kind of dataset)
+    public PersonListAdapter(Person[] myDataset) {
+        mDataset = myDataset;
     }
 
+    // Create new views (invoked by the layout manager)
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        //get the persons information
-        String name = getItem(position).getName();
+    public PersonListAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
+                                                         int viewType) {
+        // create a new view
+        LinearLayout l = (LinearLayout)  LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.friendslist_row, parent, false);
 
-        //Create the person object with the information
-        Person person = new Person(name);
+        //TextView v = (TextView) LayoutInflater.from(parent.getContext())
+        //        .inflate(R.layout.my_text_view, parent, false);
 
-        //create the view result for showing the animation
-        final View result;
+        MyViewHolder vh = new MyViewHolder(l);
+        return vh;
+    }
 
-        //ViewHolder object
-        ViewHolder holder;
+    // Replace the contents of a view (invoked by the layout manager)
+    @Override
+    public void onBindViewHolder(MyViewHolder holder, int position) {
+        // - get element from your dataset at this position
+        // - replace the contents of the view with that element
+        ((TextView) holder.layout.findViewById(R.id.username)).setText(mDataset[position].getName());
+        //holder.textView.setText(mDataset[position]);
 
-
-        if(convertView == null){
-            LayoutInflater inflater = LayoutInflater.from(mContext);
-            convertView = inflater.inflate(mResource, parent, false);
-            holder= new ViewHolder();
-            holder.name = (TextView) convertView.findViewById(R.id.textView1);
-
-            result = convertView;
-
-            convertView.setTag(holder);
-        }
-        else{
-            holder = (ViewHolder) convertView.getTag();
-            result = convertView;
-        }
+    }
 
 
-        Animation animation = AnimationUtils.loadAnimation(mContext,
-                (position > lastPosition) ? R.anim.nav_default_pop_enter_anim : R.anim.nav_default_enter_anim);
-        result.startAnimation(animation);
-        lastPosition = position;
-
-        holder.name.setText(person.getName());
-
-        return convertView;
+    // Return the size of your dataset (invoked by the layout manager)
+    @Override
+    public int getItemCount() {
+        return mDataset.length;
     }
 }
-
-
-
-
-
-
 
