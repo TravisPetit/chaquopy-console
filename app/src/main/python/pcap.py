@@ -143,11 +143,14 @@ def dump(fname):
         seq = e[0][1]
         if e[2] != None:
             e[2] = cbor.loads(e[2])
-        s += f"** fid={fid}, seq={seq}, ${len(w)} bytes" + "\n"
-        s += f"   hashref={href.hex()}" + "\n"
-        s += f"   content={e[2]}" + "\n"
+        #s += f"** fid={fid}, seq={seq}, ${len(w)} bytes" + "\n"
+        #s += f"   hashref={href.hex()}" + "\n"
+        #s += f"   content={e[2]}" + "\n"
+        s += f"content={e[2]}" + "_" + f"seq={seq}" + "_"
     p.close()
     return s
+
+
 
 # ----------------------------------------------------------------------
 

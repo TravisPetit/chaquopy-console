@@ -85,15 +85,47 @@ public abstract class BacNetActivity extends AppCompatActivity
         }
     }
 
+    void openMyFeedRecyclerActivity(){
+        Intent openActivity = new Intent(this, RecyclerFeedActivity.class);
+        openActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivityIfNeeded(openActivity, 0);
+    }
+
+    void openAccountActivity(){
+        Intent openActivity = new Intent(this, AccountActivity.class);
+        openActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivityIfNeeded(openActivity, 0);
+    }
+
+    void openFriendslistActivity(){
+        Intent openActivity = new Intent(this, FriendslistActivity.class);
+        openActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivityIfNeeded(openActivity, 0);
+    }
+
+    void openFeedTabActivity(){
+        Intent openActivity = new Intent(this, FeedTabActivity.class);
+        openActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivityIfNeeded(openActivity, 0);
+    }
 
     @Override public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == resId("id", "menu_myFeed")) {
-            openMyFeedActivity();
+            //openMyFeedRecyclerActivity();
+            openFeedTabActivity();
             return true;
         }
         if (id == resId("id", "menu_Debug")) {
             openDebugActivity();
+            return true;
+        }
+        if (id == resId("id", "menu_Account")) {
+            openAccountActivity();
+            return true;
+        }
+        if (id == resId("id", "menu_Friendslist")) {
+            openFriendslistActivity();
             return true;
         }
         return false;
