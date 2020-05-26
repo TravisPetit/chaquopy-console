@@ -6,7 +6,7 @@ apply plugin: 'com.chaquo.python'
 android {
     compileSdkVersion 29
     defaultConfig {
-        applicationId "com.chaquo.python.console"
+        applicationId "bacnet.group10.kotlinui"
         minSdkVersion 16
         targetSdkVersion 29
         versionCode 1
