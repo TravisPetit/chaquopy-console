@@ -51,6 +51,7 @@ public class ScanCodeActivity extends AppCompatActivity implements ZXingScannerV
 
     Python py;
     PyObject transport;
+    PyObject sync;
     String dirName;
 
     int cameraID;
@@ -238,6 +239,9 @@ public class ScanCodeActivity extends AppCompatActivity implements ZXingScannerV
         // transport KEYSET:
         // [__builtins__, __cached__, __doc__, __file__, __loader__, __name__, __package__,
         // __spec__, cbor, get_event_list, get_i_have_list, get_i_want_list, pcap, sync]
+
+
+        sync = py.getModule("logSync.database_sync");
     }
 
 
@@ -483,7 +487,7 @@ public class ScanCodeActivity extends AppCompatActivity implements ZXingScannerV
 
     private byte[] get_i_want_list(byte[] i_have_list) {
         PyObject i_have_list_py = byteArray2PyObject(i_have_list);
-        PyObject i_want_list_and_extension_list = transport.call("get_i_want_list", i_have_list_py);
+        PyObject i_want_list_and_extension_list = transport.callAttr("get_i_want_list", i_have_list_py);
         PyObject i_want_list_py = i_want_list_and_extension_list.asList().get(0);
         i_want_list = pyObject2ByteArray(i_want_list_py);
         extension_list_py = i_want_list_and_extension_list.asList().get(1);
@@ -492,14 +496,14 @@ public class ScanCodeActivity extends AppCompatActivity implements ZXingScannerV
 
     private byte[] get_event_list(byte[] i_want_list) {
         PyObject i_want_list_py = byteArray2PyObject(i_want_list);
-        PyObject event_list_py = transport.call("get_event_list", i_want_list_py);
+        PyObject event_list_py = transport.callAttr("get_event_list", i_want_list_py);
         event_list = pyObject2ByteArray(event_list_py);
         return event_list;
     }
 
     private void sync_extensions(byte[] event_list) {
         PyObject event_list_py = byteArray2PyObject(event_list);
-        transport.callAttr("sync_extensions", extension_list_py, event_list_py);
+        sync.callAttr("sync_database", extension_list_py, event_list_py);
     }
 
     private int getNumSubpackets(byte[] arr) {
