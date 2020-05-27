@@ -6,12 +6,13 @@ from .eventCreationWrapper import EventCreationWrapper
 import random
 
 
+
 class UiFunctionHandler:
 
     def __init__(self):
         self._fcc = FeedCtrlConnection()
         # try catch or if None??
-        lastEvent = self._fcc.get_my_last_event()
+        lastEvent = self._fcc.get_current_event(self._fcc.get_host_master_id())
         if lastEvent is not None:
             self._ecf = EventFactory(lastEvent)
             self._eventCreationWrapper = EventCreationWrapper(self._ecf)
@@ -92,10 +93,6 @@ def generate_random_feed_id():
     return public_key_feed_id
 
 
-"""
-    This method is used to generate data for testing the UI.
-    Add here if more data is needed.
-"""
 
 def generate_test_friend():
     ufh = UiFunctionHandler()

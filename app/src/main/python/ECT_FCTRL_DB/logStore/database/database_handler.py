@@ -4,6 +4,7 @@ from ..funcs.log import create_logger
 from ..funcs.event import Event
 from ..funcs.EventCreationTool import EventFactory
 
+
 logger = create_logger('DatabaseHandler')
 """The database handler allows both the application as well as the network layer to access database functionality.
 
@@ -25,9 +26,11 @@ class DatabaseHandler:
 
     def add_to_db(self, event_as_cbor, app):
         """"Add a cbor event to the two databases.
+
         Calls each the byte array handler as well as the event handler to insert the event in both databases
         accordingly. Gets called both by database connector as well as the function connector. Returns 1 if successful,
         otherwise -1 if any error occurred.
+
         If a new feed is created for an app, the first event has to contain appname/MASTER and data as {'master_feed': master_feed_id}
         """
         if app:
@@ -51,24 +54,18 @@ class DatabaseHandler:
                         ecf = EventFactory(last_event)
                         event = ecf.next_event('MASTER/NewFeed', {'feed_id': feed_id, 'app_name': cont_ident})
                         self.add_to_db(event, False)
-                        event = ecf.next_event('MASTER/Trust', {'feed_id': feed_id})
-                        self.add_to_db(event, False)
+                        # event = ecf.next_event('MASTER/Trust', {'feed_id': feed_id})
+                        # self.add_to_db(event, False)
                     else:
                         return -1
         try:
             self.__byteArrayHandler.insert_byte_array(event_as_cbor)
         except InvalidSequenceNumber as e:
-            print("ERROR FROM DB_HANDLER")
-            print("LINE 61")
-            print("printing application: {}".format(application))
             logger.error(e)
             return -1
         try:
             self.__eventHandler.add_event(event_as_cbor)
         except InvalidApplicationError as e:
-            print("ERROR FROM DB_HANDLER")
-            print("LINE 69")
-            print("printing application: {}".format(application))
             logger.error(e)
             return -1
         return 1
