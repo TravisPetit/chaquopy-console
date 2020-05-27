@@ -109,6 +109,24 @@ public abstract class BacNetActivity extends AppCompatActivity
         startActivityIfNeeded(openActivity, 0);
     }
 
+    void send(){
+        Intent startScannerIntent = new Intent(getApplicationContext(), ScanCodeActivity.class);
+
+        startScannerIntent.putExtra("device", 'A');
+        startScannerIntent.putExtra("packetsize", 12);
+
+        startActivity(startScannerIntent);
+    }
+
+    void rcv(){
+        Intent startScannerIntent = new Intent(getApplicationContext(), ScanCodeActivity.class);
+
+        startScannerIntent.putExtra("device", 'B');
+        startScannerIntent.putExtra("packetsize", 12);
+
+        startActivity(startScannerIntent);
+    }
+
     @Override public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == resId("id", "menu_myFeed")) {
@@ -126,6 +144,15 @@ public abstract class BacNetActivity extends AppCompatActivity
         }
         if (id == resId("id", "menu_Friendslist")) {
             openFriendslistActivity();
+            return true;
+        }
+
+        if (id == resId("id", "qr_send")) {
+            send();
+            return true;
+        }
+        if (id == resId("id", "qr_rcv")) {
+            rcv();
             return true;
         }
         return false;

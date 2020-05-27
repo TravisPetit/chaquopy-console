@@ -11,4 +11,11 @@
     <item android:title="Onboarding"
         android:id="@+id/menu_Friendslist"
         />
+
+    <item android:title="QR send"
+        android:id="@+id/qr_send"/>
+
+    <item android:title="QR receive"
+        android:id="@+id/qr_rcv"
+        />
 </menu>
