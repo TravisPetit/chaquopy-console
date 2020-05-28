@@ -37,6 +37,7 @@ class Verification:
         @:parameter feed_id: The feed_id to check.
         @:returns True if accepted or False if not.
         """
+
     def check_outgoing(self, feed_id):
         if self._hostid is None:
             self._hostid = self._fcc.get_host_master_id()
