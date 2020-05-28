@@ -4,7 +4,6 @@ from ..funcs.log import create_logger
 from ..funcs.event import Event
 from ..funcs.EventCreationTool import EventFactory
 
-
 logger = create_logger('DatabaseHandler')
 """The database handler allows both the application as well as the network layer to access database functionality.
 
